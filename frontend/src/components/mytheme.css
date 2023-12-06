@@ -1,0 +1,53 @@
+/* .ant-menu,
+.ant-menu-root,
+.ant-menu-inline,
+.ant-menu-dark,
+.css-dev-only-do-not-override-nllxry {
+} */
+
+/* .ant-layout {
+    background-color: #181D31;
+} */
+
+/* .ant-menu-item,
+.ant-menu-item-selected,
+.ant-menu-item-only-child {
+    background-color: #E48F44;
+} */
+
+/* .ant-menu-item:hover,
+.ant-menu-item:active,
+*/
+/* .ant-menu-item-selected {
+    background-color: #E48F44;
+}  */
+/* .ant-menu:hover 
+background-color: #E48F44;
+} */
+
+/*FFEFCD
+A58E74
+E09132
+424530*/
+.ant-menu {
+    background-color: #424530;
+}
+.ant-menu-item:hover {
+    background-color: #E48F44 !important;
+    color: black !important;
+}
+
+.ant-menu-item.ant-menu-item-selected {
+    background-color: #E48F44;
+    color: black;
+}
+
+.ant-menu-item {
+    background-color: #FFEFCD;
+    color: black;
+}
+
+/* .ant-menu-item.ant-menu-active.ant-menu-item-only-child:hover {
+    background-color: #E48F44;
+    color: black;
+} */
