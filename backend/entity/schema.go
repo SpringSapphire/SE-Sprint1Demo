@@ -10,7 +10,7 @@ type Product struct {
 	gorm.Model
 	ProductName    string `gorm:"uniqueIndex"`
 	ProductPicture string `gorm:"type:longtext"`
-	price          int
+	Price          int
 	Description    string
 	DateAdded      time.Time
 

@@ -1,13 +1,10 @@
-import React, { FC, useState, useEffect } from "react";
-import type { MenuProps } from "antd";
-import { UserOutlined, DashboardOutlined } from "@ant-design/icons";
+import React from "react";
 import { Layout, Menu } from "antd";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 const { Header } = Layout;
 
-const ZooHeader :FC = () => {
+const ZooHeader : React.FC = () => {
     return (
-        <Header style={{ backgroundColor: "black" }} />
+        <Header style={{ backgroundColor: "#424530", maxHeight: "10vh" }} />
     );
 }; 
 export default ZooHeader;

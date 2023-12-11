@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
 import type { MenuProps } from "antd";
 import { UserOutlined, DashboardOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
@@ -23,8 +23,10 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("แดชบอร์ด", "1", <DashboardOutlined />),
-  getItem("ข้อมูลสมาชิก", "2", <UserOutlined />),
+  getItem("สินค้า", "1", <DashboardOutlined />),
+  getItem("เพิ่มสินค้า", "2", <UserOutlined />),
+  getItem("ผู้ผลิต", "3", <UserOutlined />),
+  getItem("เพิ่มผู้ผลิต", "", <UserOutlined />),
 ];
 
 const ProductSideBar: FC = () => {
@@ -43,23 +45,44 @@ const ProductSideBar: FC = () => {
       >
         <Menu
           theme="light"
-          defaultSelectedKeys={[page ? page : "dashboard"]}
+          defaultSelectedKeys={[page ? page : "product"]}
           mode="inline"
           // style={{ backgroundColor: "#424530", color: "black" }}
         >
           <Menu.Item
-            key="dashboard"
-            onClick={() => setCurrentPage("dashboard")}
+            key="product"
+            onClick={() => setCurrentPage("product")}
           >
-            <Link to="/">
+            <Link to="/product">
               <DashboardOutlined />
-              <span>แดชบอร์ด</span>
+              <span>สินค้า</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="customer" onClick={() => setCurrentPage("customer")}>
-            <Link to="/customer">
+          <Menu.Item 
+            key="addProduct" 
+            onClick={() => setCurrentPage("addProduct")}
+          >
+            <Link to="/product/add">
               <UserOutlined />
-              <span>ข้อมูลสมาชิก</span>
+              <span>เพิ่มสินค้า</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item 
+            key="supplier" 
+            onClick={() => setCurrentPage("supplier")}
+          >
+            <Link to="/supplier">
+              <UserOutlined />
+              <span>ผู้ผลิต</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item 
+            key="addSupplier" 
+            onClick={() => setCurrentPage("addSupplier")}
+          >
+            <Link to="/supplie/add">
+              <UserOutlined />
+              <span>เพิ่มผู้ผลิต</span>
             </Link>
           </Menu.Item>
         </Menu>
