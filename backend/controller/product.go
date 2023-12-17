@@ -34,10 +34,13 @@ func CreateProduct(c *gin.Context) {
 	// }
 
 	p := entity.Product{
-		ProductName:    product.ProductName,
-		ProductPicture: product.ProductPicture,
-		Description:    product.Description,
-		DateAdded:      product.DateAdded,
+		ProductName:        product.ProductName,
+		Price:              product.Price,
+		ProductPicture:     product.ProductPicture,
+		ProductDescription: product.ProductDescription,
+		DateAdded:          product.DateAdded,
+		Category:           category,
+		Supplier:           supplier,
 	}
 
 	// บันทึก

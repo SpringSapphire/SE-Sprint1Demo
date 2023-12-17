@@ -25,9 +25,9 @@ const ProductTable: React.FC = () => {
             key: "id",
         },
         {
-            title: "รูปสินค้า",
-            dataIndex: "ProductPicture",
-            key: "productpicture",
+            title: "รูปชื่อโรงงาน",
+            dataIndex: "SupplierName",
+            key: "supplierName",
             width: "35vh",
             render: (text, record, index) => (
                 <img
@@ -39,31 +39,19 @@ const ProductTable: React.FC = () => {
             ),
         },
         {
-            title: "ชื่อสินค้า",
-            dataIndex: "ProductName",
-            key: "productname",
+            title: "ชื่อโรงงาน",
+            dataIndex: "SupplierName",
+            key: "supplierName",
         },
         {
-            title: "ราคา",
-            dataIndex: "Price",
-            key: "price",
-        },
-        {
-            title: "ประเภทสินค้า",
-            dataIndex: "Category",
-            key: "category",
-            render: (item) => Object.values(item.CategoryName),
-        },
-        {
-            title: "วันที่เพิ่ม",
-            dataIndex: "DateAdded",
-            key: "dateAdded",
-            render: (text: string) => dayjs(text).format("DD/MM/YYYY"),
+            title: "เบอร์โทรศัพท์",
+            dataIndex: "SupplierTel",
+            key: "supplierTel",
         },
         {
             title: "คำอธิบายเพิ่มเติม",
-            dataIndex: "ProductDescription",
-            key: "productDescription",
+            dataIndex: "SupplierDescription",
+            key: "supplierDescription",
             width: "40vh", 
         },
         {

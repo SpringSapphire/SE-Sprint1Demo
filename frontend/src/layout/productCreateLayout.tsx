@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Layout } from "antd";
 import ProductSideBar from "../components/productsidebar";
 import ZooHeader from "../components/header";
-import CreateProduct from "../pages/productPages/create/productCreatePage";
+import CreateProductPage from "../pages/productPages/create/productCreatePage";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -13,7 +13,7 @@ const ProductCreateLayout: React.FC = () => {
       <Layout >
         <ProductSideBar />
         <Content>
-          <CreateProduct/>
+          <CreateProductPage/>
         </Content>
       </Layout>
     </Layout>

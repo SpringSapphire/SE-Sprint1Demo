@@ -25,6 +25,15 @@ func SetupDatabase() {
 
 	db = database
 
+	//Supplier
+	factory1 := Supplier{
+		SupplierName:        "โรงผลิต ZooZa",
+		SupplierDescription: "โรงงานผลิตประจำสวนสัตว์ ZooZa",
+		SupplierTel:         "0445658521",
+	}
+	db.Model(&Supplier{}).Create(&factory1)
+
+	//Category
 	accessories := Category{
 		CategoryName: "เครื่องประดับ",
 	}
@@ -34,4 +43,19 @@ func SetupDatabase() {
 		CategoryName: "ของที่ระลึก",
 	}
 	db.Model(&Category{}).Create(&souvenir)
+
+	stationery := Category{
+		CategoryName: "เครื่องเขียน",
+	}
+	db.Model(&Category{}).Create(&stationery)
+
+	decoration := Category{
+		CategoryName: "ของตกแต่ง",
+	}
+	db.Model(&Category{}).Create(&decoration)
+
+	toy := Category{
+		CategoryName: "ของเล่น",
+	}
+	db.Model(&Category{}).Create(&toy)
 }

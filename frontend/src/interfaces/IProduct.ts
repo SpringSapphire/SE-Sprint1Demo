@@ -6,10 +6,10 @@ export interface ProductInterface {
     ProductName?: string;
     ProductPicture?: string;
     Price?: number;
-    Description?: string;
-    DateAdded?: Date;
+    ProductDescription?: string;
+    DateAdded?: string;
     CategoryID?: number;
-    Category?: CategoryInterface;
+    CategoryName?: CategoryInterface;
     SupplierID?: number;
-    Supplier?: SupplierInterface;
+    SupplierName?: SupplierInterface;
 }

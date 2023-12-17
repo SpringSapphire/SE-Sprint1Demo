@@ -1,5 +1,7 @@
 export interface SupplierInterface {
     ID?: number;
-    SuplierName?: string;
+    SupplierName?: string;
+    SupplierPicture?: string;
     SupplierDescription?: string;
+    SupplierTel?: string;
 }

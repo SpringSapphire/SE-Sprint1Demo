@@ -19,8 +19,10 @@ func CreateSupplier(c *gin.Context) {
 
 	// สร้าง User
 	s := entity.Supplier{
-		SuplierName:         supplier.SuplierName,
+		SupplierName:        supplier.SupplierName,
+		SupplierPicture:     supplier.SupplierPicture,
 		SupplierDescription: supplier.SupplierDescription,
+		SupplierTel:         supplier.SupplierTel,
 	}
 
 	// บันทึก
@@ -30,17 +32,6 @@ func CreateSupplier(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"data": s})
-}
-
-// GET /user/:id
-func GetSupplier(c *gin.Context) {
-	var supplier entity.Supplier
-	id := c.Param("id")
-	if err := entity.DB().Raw("SELECT * FROM suppliers WHERE id = ?", id).Find(&supplier).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"data": supplier})
 }
 
 // GET /users

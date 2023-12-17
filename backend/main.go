@@ -10,7 +10,7 @@ func main() {
 	entity.SetupDatabase()
 	r := gin.Default()
 	r.Use(CORSMiddleware())
-	r.POST("/product", controller.CreateProduct)
+	r.POST("/products", controller.CreateProduct)
 	r.POST("/supplier", controller.CreateSupplier)
 
 	router := r.Group("")
@@ -21,11 +21,10 @@ func main() {
 		router.GET("/products", controller.ListProducts)
 		router.GET("/products/:id", controller.GetProduct)
 		router.PATCH("/products", controller.UpdateProduct)
-		router.DELETE("/products/:id", controller.DeleteProduct)
+		router.DELETE("/product/:id", controller.DeleteProduct)
 		//
 		router.GET("/suppliers", controller.ListSuppliers)
-		router.GET("/suppliers/:id", controller.GetSupplier)
-		router.DELETE("/suppliers/:id", controller.DeleteSupplier)
+		router.DELETE("/supplier/:id", controller.DeleteSupplier)
 
 		// Gender Routes
 		router.GET("/category", controller.ListCategories)

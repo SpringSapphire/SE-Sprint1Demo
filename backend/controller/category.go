@@ -10,7 +10,7 @@ import (
 
 func ListCategories(c *gin.Context) {
 	var categories []entity.Category
-	if err := entity.DB().Raw("SELECT * FROM categorys").Scan(&categories).Error; err != nil {
+	if err := entity.DB().Raw("SELECT * FROM categories").Scan(&categories).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
