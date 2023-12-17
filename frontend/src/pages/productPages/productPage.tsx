@@ -112,7 +112,7 @@ const ProductTable: React.FC = () => {
 
     const showModal = (val: ProductInterface) => {
         setModalText(
-            `คุณต้องการลบข้อมูลผู้ใช้ "${val.ProductName}" หรือไม่ ?`
+            `คุณต้องการลบข้อมูลสินค้า "${val.ProductName}" หรือไม่ ?`
         );
         setDeleteId(val.ID);
         setOpen(true);

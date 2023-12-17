@@ -80,7 +80,7 @@ const ProductSideBar: FC = () => {
             key="addSupplier" 
             onClick={() => setCurrentPage("addSupplier")}
           >
-            <Link to="/supplie/add">
+            <Link to="/supplier/add">
               <UserOutlined />
               <span>เพิ่มผู้ผลิต</span>
             </Link>

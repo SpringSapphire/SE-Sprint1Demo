@@ -14,25 +14,25 @@ import dayjs from "dayjs"
 import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import { Link, useNavigate } from "react-router-dom";
-import { ProductInterface } from "../../interfaces/IProduct";
-import { DeleteProductByID, GetProducts } from "../../services/https";
+import { SupplierInterface } from "../../interfaces/ISupplier";
+import { DeleteSupplierByID, GetSuppliers } from "../../services/https";
 
-const ProductTable: React.FC = () => {
-    const columns: ColumnsType<ProductInterface> = [
+const SupplierTable: React.FC = () => {
+    const columns: ColumnsType<SupplierInterface> = [
         {
             title: "ลำดับ",
             dataIndex: "ID",
             key: "id",
         },
         {
-            title: "รูปชื่อโรงงาน",
-            dataIndex: "SupplierName",
-            key: "supplierName",
+            title: "รูปโรงงาน",
+            dataIndex: "SupplierPicture",
+            key: "supplierPicture",
             width: "35vh",
             render: (text, record, index) => (
                 <img
-                    src={record.ProductPicture}
-                    alt={record.ProductPicture}
+                    src={record.SupplierPicture}
+                    alt={record.SupplierPicture}
                     className="w3-left w3-circle w3-margin-right"
                     width="50%"
                 />
@@ -49,10 +49,10 @@ const ProductTable: React.FC = () => {
             key: "supplierTel",
         },
         {
-            title: "คำอธิบายเพิ่มเติม",
+            title: "คำอธิบายโรงงานเพิ่มเติม",
             dataIndex: "SupplierDescription",
             key: "supplierDescription",
-            width: "40vh", 
+            width: "50vh", 
         },
         {
             title: "จัดการ",
@@ -81,7 +81,7 @@ const ProductTable: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const [products, setProducts] = useState<ProductInterface[]>([]);
+    const [suppliers, setSuppliers] = useState<SupplierInterface[]>([]);
 
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -91,16 +91,16 @@ const ProductTable: React.FC = () => {
     const [modalText, setModalText] = useState<String>();
     const [deleteId, setDeleteId] = useState<Number>();
 
-    const getProducts = async () => {
-        let res = await GetProducts();
+    const getSuppliers = async () => {
+        let res = await GetSuppliers();
         if (res) {
-            setProducts(res);
+            setSuppliers(res);
         }
     };
 
-    const showModal = (val: ProductInterface) => {
+    const showModal = (val: SupplierInterface) => {
         setModalText(
-            `คุณต้องการลบข้อมูลผู้ใช้ "${val.ProductName}" หรือไม่ ?`
+            `คุณต้องการลบข้อมูล "${val.SupplierName}" หรือไม่ ?`
         );
         setDeleteId(val.ID);
         setOpen(true);
@@ -108,14 +108,14 @@ const ProductTable: React.FC = () => {
 
     const handleOk = async () => {
         setConfirmLoading(true);
-        let res = await DeleteProductByID(deleteId);
+        let res = await DeleteSupplierByID(deleteId);
         if (res) {
             setOpen(false);
             messageApi.open({
                 type: "success",
                 content: "ลบข้อมูลสำเร็จ",
             });
-            getProducts();
+            getSuppliers();
         } else {
             setOpen(false);
             messageApi.open({
@@ -131,7 +131,7 @@ const ProductTable: React.FC = () => {
     };
 
     useEffect(() => {
-        getProducts();
+        getSuppliers();
     }, []);
 
     return (
@@ -140,12 +140,12 @@ const ProductTable: React.FC = () => {
             <Card style={{ margin: "5px", minHeight: "90vh" }}>
                 <Row>
                     <Col span={12}>
-                        <h2>จัดการข้อมูลสินค้า</h2>
+                        <h2>จัดการข้อมูลโรงงานผลิต</h2>
                     </Col>
                 </Row>
                 <Divider />
                 <div style={{ marginTop: 5 }}>
-                    <Table rowKey="ID" columns={columns} dataSource={products} />
+                    <Table rowKey="ID" columns={columns} dataSource={suppliers} />
                 </div>
                 <Modal
                     title="ลบข้อมูล ?"
@@ -161,4 +161,4 @@ const ProductTable: React.FC = () => {
     );
 };
 
-export default ProductTable;
+export default SupplierTable;

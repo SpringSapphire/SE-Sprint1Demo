@@ -109,7 +109,7 @@ const CreateProductPage: React.FC = () => {
                                 name="ProductName"
                                 rules={[
                                     {
-                                        // required: true,
+                                        required: true,
                                         message: "กรุณากรอกชื่อสินค้า !",
                                     },
                                 ]}
@@ -125,7 +125,24 @@ const CreateProductPage: React.FC = () => {
                                 rules={[{
                                     required: true,
                                     message: "กรุณาระบุราคา !"
-                                }]}
+                                },
+                                {
+                                    type: 'integer',
+                                    message: 'กรุณาใส่จำนวนเต็ม',
+                                },
+                                {
+                                    min: 1, // Example minimum value constraint
+                                    message: 'ราคาต้องมีค่ามากกว่า 0 บาท',
+                                },
+                                {
+                                    validator: (rule, value) => {
+                                        if (value < 0) {
+                                            return Promise.reject('กรุณาใส่จำนวนเต็มบวก');
+                                        }
+                                        return Promise.resolve();
+                                    },
+                                },
+                                ]}
                                 getValueFromEvent={(e) => {
                                     // Convert the "Price" field to an integer
                                     const intValue = parseInt(e.target.value, 10); // Use base 10 for decimal numbers
@@ -135,9 +152,10 @@ const CreateProductPage: React.FC = () => {
                                     }
                                     // If NaN, return undefined to avoid displaying "NaN"
                                     return undefined;
+
                                 }}
                             >
-                                <Input suffix="บาท" />
+                                <Input addonAfter="บาท" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} sm={24} md={24} lg={24} xl={12}>
@@ -147,7 +165,8 @@ const CreateProductPage: React.FC = () => {
                                 rules={[{
                                     required: true,
                                     message: "กรุณาเลือกประเภทสินค้า !"
-                                }]}
+                                },
+                                ]}
                             >
                                 <Select allowClear>
                                     {catergories.map((item) => (
@@ -184,7 +203,7 @@ const CreateProductPage: React.FC = () => {
                                 name="Description"
                                 rules={[
                                     {
-                                        // required: true,
+                                        required: true,
                                         message: "กรุณากรอกคำอธิบายสินค้า !",
                                     },
                                 ]}
@@ -196,15 +215,25 @@ const CreateProductPage: React.FC = () => {
                             <Form.Item
                                 label="วันที่เพิ่มสินค้า"
                                 name="DateAdded"
-                                
+
                                 rules={[
                                     {
                                         required: true,
                                         message: "กรุณาเลือกวันที่เพิ่มสินค้า !",
                                     },
+                                    {
+                                        validator: (_, value) => {
+                                            const selectedDate = dayjs(value);
+                                            const currentDate = dayjs();
+                                            if (selectedDate.isBefore(currentDate, 'day')) {
+                                                return Promise.reject('วันที่เพิ่มสินค้าต้องเป็นวันในอนาคตเท่านั้น');
+                                            }
+                                            return Promise.resolve();
+                                        },
+                                    },
                                 ]}
                             >
-                                <DatePicker onChange={onChangeDate} format={dateFormat}/>
+                                <DatePicker onChange={onChangeDate} format={dateFormat} />
                             </Form.Item>
                         </Col>
                         <Col xs={24} sm={24} md={24} lg={24} xl={12}>
@@ -214,6 +243,12 @@ const CreateProductPage: React.FC = () => {
                                 name="ProductPicture"
                                 valuePropName="fileList"
                                 getValueFromEvent={normFile}
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "กรุณาเพิ่มรูปสินค้า !",
+                                    },
+                                ]}
                             >
                                 <Upload maxCount={1} multiple={false} listType="picture-card">
                                     <div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Layout } from "antd";
-import ProductSideBar from "../components/productsidebar";
-import ZooHeader from "../components/header";
-import CreateProductPage from "../pages/productPages/create/productCreatePage";
+import ProductSideBar from "../../components/productsidebar";
+import ZooHeader from "../../components/header";
+import CreateProductPage from "../../pages/productPages/create/productCreatePage";
 
 const { Header, Content, Footer, Sider } = Layout;
 
