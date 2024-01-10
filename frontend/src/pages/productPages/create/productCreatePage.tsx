@@ -145,13 +145,19 @@ const CreateProductPage: React.FC = () => {
                                 ]}
                                 getValueFromEvent={(e) => {
                                     // Convert the "Price" field to an integer
-                                    const intValue = parseInt(e.target.value, 10); // Use base 10 for decimal numbers
+                                    // const trimmedValue = e.target.value.trim(); // Trim leading and trailing spaces
+                                    // const intValue = parseInt(e.target.value, 10); // Use base 10 for decimal numbers
                                     // Check if the conversion results in NaN
-                                    if (!isNaN(intValue)) {
-                                        return intValue;
-                                    }
+                                    // if (!isNaN(intValue)) {
+                                    //     return intValue;
+                                    // }
                                     // If NaN, return undefined to avoid displaying "NaN"
-                                    return undefined;
+                                    // return undefined;
+                                    const trimmedValue = e.target.value.trim(); // Trim leading and trailing spaces
+                                    const numericValue = parseFloat(trimmedValue); // Parse as a float to handle decimal values
+                                    const intValue = isNaN(numericValue) ? undefined : Math.floor(numericValue); // Convert to integer
+
+                                    return intValue;
 
                                 }}
                             >
