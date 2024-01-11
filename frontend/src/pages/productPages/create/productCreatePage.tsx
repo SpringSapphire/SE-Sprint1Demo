@@ -84,13 +84,12 @@ const CreateProductPage: React.FC = () => {
   }, []);
 
   const normFile = (e: any) => {
-    const fileList = Array.isArray(e) ? e : e?.fileList || [];
-        if (fileList.length > 0) {
-            setProductPicture(fileList[0]?.thumbUrl);
-          }
-        
-          return fileList;
-  };
+    if (Array.isArray(e)) {
+        return e;
+    }
+    setProductPicture(e?.fileList[0])
+    return e?.fileList;
+};
 
   const onChangeDate: DatePickerProps["onChange"] = (date, dateString) => {
     console.log(date, dateString);

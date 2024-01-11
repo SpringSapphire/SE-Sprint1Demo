@@ -10,14 +10,14 @@ type Product struct {
 	gorm.Model
 	ProductName        string    `gorm:"uniqueIndex" valid:"required~Product name is required"`
 	ProductPicture     string    `gorm:"type:longtext"`
-	Price              int       `valid:"required~Price is required"`
+	Price              int       `valid:"required~Price is required, range(1|1000000)~Price must greater than zero"`
 	ProductDescription string    `valid:"required~Product description is required"`
 	DateAdded          time.Time `valid:"required~Date is required"`
 
-	CategoryID uint     `valid:"required~Gender is required"`
+	CategoryID uint     `valid:"required~Category is required"`
 	Category   Category `gorm:"reference:id"`
 
-	SupplierID uint     `valid:"required~Gender is required"`
+	SupplierID uint     `valid:"required~Supplier is required"`
 	Supplier   Supplier `gorm:"reference:id"`
 }
 
