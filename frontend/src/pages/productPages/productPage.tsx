@@ -73,7 +73,7 @@ const ProductTable: React.FC = () => {
             render: (text, record, index) => (
                 <>
                     <Button
-                        onClick={() => navigate(`/customer/edit/${record.ID}`)}
+                        onClick={() => navigate(`/product/edit/${record.ID}`)}
                         shape="circle"
                         icon={<EditOutlined />}
                         size={"large"}

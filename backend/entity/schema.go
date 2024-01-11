@@ -8,17 +8,17 @@ import (
 
 type Product struct {
 	gorm.Model
-	ProductName        string `gorm:"uniqueIndex"`
-	ProductPicture     string `gorm:"type:longtext"`
-	Price              int
-	ProductDescription string
-	DateAdded          time.Time
+	ProductName        string    `gorm:"uniqueIndex" valid:"required~Product name is required"`
+	ProductPicture     string    `gorm:"type:longtext"`
+	Price              int       `valid:"required~Price is required"`
+	ProductDescription string    `valid:"required~Product description is required"`
+	DateAdded          time.Time `valid:"required~Date is required"`
 
-	CategoryID *uint
-	Category   Category `gorm:"foreignKey:id"`
+	CategoryID uint     `valid:"required~Gender is required"`
+	Category   Category `gorm:"reference:id"`
 
-	SupplierID *uint
-	Supplier   Supplier `gorm:"foreignKey:id"`
+	SupplierID uint     `valid:"required~Gender is required"`
+	Supplier   Supplier `gorm:"reference:id"`
 }
 
 type Category struct {
@@ -30,10 +30,10 @@ type Category struct {
 
 type Supplier struct {
 	gorm.Model
-	SupplierName        string `gorm:"uniqueIndex"`
+	SupplierName        string `gorm:"uniqueIndex" valid:"required~Supplier name is required"`
 	SupplierPicture     string
-	SupplierDescription string
-	SupplierTel         string
+	SupplierDescription string `valid:"required~Supplier description is required"`
+	SupplierTel         string `valid:"required~Telephone is required, stringlength(10|10)"`
 
 	Product []Product `gorm:"foreignKey:SupplierID"`
 }

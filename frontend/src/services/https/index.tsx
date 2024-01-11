@@ -65,12 +65,12 @@ async function DeleteProductByID(id: Number | undefined) {
     return res;
 }
 
-async function GetProductById(id: Number | undefined) {
+async function GetProductById(id: Number) {
     const requestOptions = {
         method: "GET"
     };
 
-    let res = await fetch(`${apiUrl}/product/${id}`, requestOptions)
+    let res = await fetch(`${apiUrl}/products/${id}`, requestOptions)
         .then((response) => response.json())
         .then((res) => {
             if (res.data) {

@@ -19,12 +19,12 @@ func CreateProduct(c *gin.Context) {
 	}
 
 	if tx := entity.DB().Where("id = ?", product.CategoryID).First(&category); tx.RowsAffected == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "gender not found"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "category not found"})
 		return
 	}
 
 	if tx := entity.DB().Where("id = ?", product.SupplierID).First(&supplier); tx.RowsAffected == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "gender not found"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "supplier not found"})
 		return
 	}
 
@@ -90,7 +90,7 @@ func UpdateProduct(c *gin.Context) {
 	}
 
 	if tx := entity.DB().Where("id = ?", product.ID).First(&result); tx.RowsAffected == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "product not found"})
 		return
 	}
 

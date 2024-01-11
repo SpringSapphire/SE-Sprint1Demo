@@ -9,7 +9,7 @@ export interface ProductInterface {
     ProductDescription?: string;
     DateAdded?: string;
     CategoryID?: number;
-    CategoryName?: CategoryInterface;
+    Category?: CategoryInterface;
     SupplierID?: number;
-    SupplierName?: SupplierInterface;
+    Supplier?: SupplierInterface;
 }

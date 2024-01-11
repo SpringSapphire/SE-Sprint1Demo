@@ -11,25 +11,35 @@ func main() {
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 	r.POST("/products", controller.CreateProduct)
+	r.GET("/products", controller.ListProducts)
+	r.GET("/products/:id", controller.GetProduct)
+	r.PATCH("/products", controller.UpdateProduct)
+	r.DELETE("/product/:id", controller.DeleteProduct)
+	//
 	r.POST("/supplier", controller.CreateSupplier)
+	r.GET("/suppliers", controller.ListSuppliers)
+	r.DELETE("/supplier/:id", controller.DeleteSupplier)
 
-	router := r.Group("")
-	{
-		// router.Use(middlewares.Authorizes())
-		// {
-		// User Routes
-		router.GET("/products", controller.ListProducts)
-		router.GET("/products/:id", controller.GetProduct)
-		router.PATCH("/products", controller.UpdateProduct)
-		router.DELETE("/product/:id", controller.DeleteProduct)
-		//
-		router.GET("/suppliers", controller.ListSuppliers)
-		router.DELETE("/supplier/:id", controller.DeleteSupplier)
+	// Gender Routes
+	r.GET("/category", controller.ListCategories)
 
-		// Gender Routes
-		router.GET("/category", controller.ListCategories)
-		// }
-	}
+	// router := r.Group("")
+	// {
+	// router.Use(middlewares.Authorizes())
+	// {
+	// User Routes
+	// router.GET("/products", controller.ListProducts)
+	// router.GET("/products/:id", controller.GetProduct)
+	// router.PATCH("/products", controller.UpdateProduct)
+	// router.DELETE("/product/:id", controller.DeleteProduct)
+
+	// router.GET("/suppliers", controller.ListSuppliers)
+	// router.DELETE("/supplier/:id", controller.DeleteSupplier)
+
+	// Gender Routes
+	// router.GET("/category", controller.ListCategories)
+	// }
+	// }
 
 	// Run the server
 	r.Run()
