@@ -32,8 +32,8 @@ type Supplier struct {
 	gorm.Model
 	SupplierName        string `gorm:"uniqueIndex"`
 	SupplierPicture     string
-	SupplierDescription string `valid:"required~Supplier description is required"`
-	SupplierTel         string `valid:"required~Telephone number is required"`
+	SupplierDescription string
+	SupplierTel         string
 
 	Product []Product `gorm:"foreignKey:SupplierID"`
 }

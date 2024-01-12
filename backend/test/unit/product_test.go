@@ -18,8 +18,6 @@ func TestProduct(t *testing.T) {
 	t.Run(`success`, func(t *testing.T) {
 		var categoryID uint = 5
 		var supplierID uint = 1
-		var SupplierTel string = "0957877774"
-		var SupplierDescription string = ""
 		product := entity.Product{
 			ProductName:        "ตุ๊กตา",
 			ProductPicture:     "",
