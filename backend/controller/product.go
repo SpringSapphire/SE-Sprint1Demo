@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/SpringSapphire/SE-Sprint1Demo/entity"
+	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,6 +15,12 @@ func CreateProduct(c *gin.Context) {
 	var supplier entity.Supplier
 
 	if err := c.ShouldBindJSON(&product); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	// validate struct
+	if _, err := govalidator.ValidateStruct(product); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

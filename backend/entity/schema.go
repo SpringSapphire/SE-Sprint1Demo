@@ -10,7 +10,7 @@ type Product struct {
 	gorm.Model
 	ProductName        string `gorm:"uniqueIndex" valid:"required~Product name is required"`
 	ProductPicture     string `gorm:"type:longtext"`
-	Price              int    `valid:"required~Price is required, range(1|1000000)~Price must greater than zero"`
+	Price              int    `valid:"required~Price is required"`
 	ProductDescription string `valid:"required~Product description is required"`
 	DateAdded          time.Time
 
@@ -30,10 +30,10 @@ type Category struct {
 
 type Supplier struct {
 	gorm.Model
-	SupplierName        string `gorm:"uniqueIndex" valid:"required~Supplier name is required"`
+	SupplierName        string `gorm:"uniqueIndex"`
 	SupplierPicture     string
 	SupplierDescription string `valid:"required~Supplier description is required"`
-	SupplierTel         string `valid:"required~Telephone is required, stringlength(10|10)"`
+	SupplierTel         string `valid:"required~Telephone number is required"`
 
 	Product []Product `gorm:"foreignKey:SupplierID"`
 }
